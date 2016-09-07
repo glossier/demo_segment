@@ -1,6 +1,5 @@
 - connection: partners_segment
 
-- scoping: true                  # for backward compatibility
 - include: "*.view.lookml"       # include all the views
 - include: "event*.dashboard.lookml"  # include all the dashboards
 - include: "pageview*.dashboard.lookml" 
@@ -69,7 +68,7 @@
     sql_on: |
       ${pages.event_id} || '-p' = ${page_facts.event_id} and 
       ${page_aliases_mapping.looker_visitor_id} = ${page_facts.looker_visitor_id} and 
-      ${pages.received_raw} = ${page_facts.received_at}
+      ${pages.received_raw} = ${page_facts.received_raw}
     relationship: one_to_one
 
 - explore: funnel_explorer
@@ -90,3 +89,6 @@
     - join: users
       relationship: many_to_one
       sql_on: coalesce(users.mapped_user_id, users.user_id) = sessions.user_id
+      
+- explore: event_list
+  hidden: true

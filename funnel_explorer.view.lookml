@@ -4,41 +4,37 @@
       SELECT tracks_sessions_map.session_id as session_id
         , MIN(
             CASE WHEN
-              {% condition event1 %} tracks.event {% endcondition %} 
-              THEN tracks.sent_at
+              {% condition event1 %} tracks_sessions_map.event {% endcondition %} 
+              THEN tracks_sessions_map.received_at
               ELSE NULL END
             ) as event1_time
         , MIN(
             CASE WHEN
-              {% condition event2 %} tracks.event {% endcondition %} 
-              THEN tracks.sent_at
+              {% condition event2 %} tracks_sessions_map.event {% endcondition %} 
+              THEN tracks_sessions_map.received_at
               ELSE NULL END
             ) as event2_time
         , MIN(
             CASE WHEN
-              {% condition event3 %} tracks.event {% endcondition %} 
-              THEN tracks.sent_at
+              {% condition event3 %} tracks_sessions_map.event {% endcondition %} 
+              THEN tracks_sessions_map.received_at
               ELSE NULL END
             ) as event3_time
-      FROM hoodie.tracks as tracks
-      LEFT JOIN ${aliases_mapping.SQL_TABLE_NAME} as aliases_mapping
-        ON aliases_mapping.alias = coalesce(tracks.user_id, tracks.anonymous_id)
-      LEFT JOIN ${track_facts.SQL_TABLE_NAME} as tracks_sessions_map
-        ON tracks.event_id = tracks_sessions_map.event_id      
+      FROM ${track_facts.SQL_TABLE_NAME} as tracks_sessions_map
       GROUP BY 1
 
   fields:
     - filter: event1
-      suggest_explore: tracks
-      suggest_dimension: tracks.event
+      suggest_explore: event_list
+      suggest_dimension: event_list.event_types
 
     - filter: event2
-      suggest_explore: tracks
-      suggest_dimension: tracks.event
+      suggest_explore: event_list
+      suggest_dimension: event_list.event_types
 
     - filter: event3
-      suggest_explore: tracks
-      suggest_dimension: tracks.event
+      suggest_explore: event_list
+      suggest_dimension: event_list.event_types
 
     - dimension: session_id
       type: string
@@ -47,17 +43,17 @@
 
     - dimension: event1
       type: time
-      timeframes: [time]
+      timeframes: [raw, time]
       sql: ${TABLE}.event1_time
 
     - dimension: event2
       type: time
-      timeframes: [time]
+      timeframes: [raw, time]
       sql: ${TABLE}.event2_time
 
     - dimension: event3
       type: time
-      timeframes: [time]
+      timeframes: [raw, time]
       sql: ${TABLE}.event3_time
     
     - dimension: event1_before_event2
@@ -67,6 +63,10 @@
     - dimension: event2_before_event3
       type: yesno
       sql: ${event2_time} < ${event3_time}
+      
+    - dimension: minutes_in_funnel
+      type: number
+      sql: datediff(min,${event1_raw},COALESCE(${event3_raw},${event2_raw}))
 
     - measure: count_sessions
       type: count_distinct
