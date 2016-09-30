@@ -43,9 +43,9 @@
            ELSE 'Repeat Session'
       END
       
-  - dimension: session_duration_minutes
-    type: number
-    sql: DATEDIFF(minutes, ${start_time}::timestamp, ${session_pg_trk_facts.end_time}::timestamp)
+#   - dimension: session_duration_minutes
+#     type: number
+#     sql: DATEDIFF(minutes, ${start_time}::timestamp, ${session_pg_trk_facts.end_time}::timestamp)
  
   - measure: count
     type: count
