@@ -1,8 +1,8 @@
 - view: page_aliases_mapping
   derived_table:
     sql_trigger_value: select current_date
-    sortkeys: [looker_visitor_id, alias]
-    distkey: alias
+    sortkeys: [glossier_visitor_id, alias]
+    distkey: ALL
     sql: |
       with
             
@@ -11,38 +11,37 @@
         select anonymous_id
         , user_id
         , received_at as received_at
-        from hoodie.tracks
+        from glossier_production.tracks
             
         union
             
         select user_id
           , null
           , received_at
-        from hoodie.tracks
+        from glossier_production.tracks
               
         union
                
         select anonymous_id
           , user_id
           , received_at
-        from hoodie.pages
+        from glossier_production.pages
                
         union
                
         select user_id
         , null
         , received_at
-        from hoodie.pages
+        from glossier_production.pages
       )
             
       select 
                   distinct anonymous_id as alias
-                , first_value(user_id ignore nulls) 
+                  , coalesce(first_value(user_id ignore nulls) 
                   over(
-                      partition by anonymous_id 
-                      order by received_at 
-                      rows between unbounded preceding and unbounded following) as looker_visitor_id
-                     
+                    partition by anonymous_id 
+                    order by received_at 
+                    rows between unbounded preceding and unbounded following),anonymous_id) as glossier_visitor_id
       from all_mappings
 
   fields:
@@ -53,8 +52,15 @@
     sql: ${TABLE}.alias
 
   # User ID
-  - dimension: looker_visitor_id
-    sql: ${TABLE}.looker_visitor_id
+  - dimension: glossier_visitor_id
+    sql: ${TABLE}.glossier_visitor_id
+  
+#   - measure: count
+#     type: count
+    
+  - measure: count_visitor
+    type: count_distinct
+    sql: ${glossier_visitor_id}
     
     
     
@@ -137,5 +143,3 @@
 #               left join realiases r7 on r6.next_alias = r7.alias
 #               left join realiases r8 on r7.next_alias = r8.alias
 #               left join realiases r9 on r8.next_alias = r9.alias
-# 
-

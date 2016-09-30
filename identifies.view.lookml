@@ -1,5 +1,5 @@
 - view: identifies
-  sql_table_name: hoodie.identifies
+  sql_table_name: glossier_production.identifies
   fields:
 
   - dimension: anonymous_id

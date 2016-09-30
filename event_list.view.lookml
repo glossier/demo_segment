@@ -8,7 +8,7 @@
     sql: |
       SELECT
         event as event_types
-      FROM hoodie.tracks
+      FROM glossier_production.tracks
       GROUP BY 1
       ORDER BY 1
     

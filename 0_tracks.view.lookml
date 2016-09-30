@@ -1,210 +1,324 @@
 - view: tracks
-  sql_table_name: hoodie.tracks
+  sql_table_name: glossier_production.tracks
   fields:
-
-# Required Fields
 
   - dimension: event_id
     primary_key: true
-    sql: ${TABLE}.event_id
+    type: string
+    sql: ${TABLE}.id
 
   - dimension: anonymous_id
+    type: string
     sql: ${TABLE}.anonymous_id
-  
-  - dimension: user_id
-    sql: ${TABLE}.user_id
-    
-  - dimension_group: received
-    type: time
-    timeframes: [time, date, week, month]
-    sql: ${TABLE}.received_at 
-    
-  - dimension: event
-    sql: ${TABLE}.event
 
-  - dimension: event_text
-    sql: ${TABLE}.event_text
+  - dimension: context_campaign_amp_utm_campaign
+    type: string
+    sql: ${TABLE}.context_campaign_amp_utm_campaign
 
+  - dimension: context_campaign_amp_utm_content
+    type: string
+    sql: ${TABLE}.context_campaign_amp_utm_content
 
-# Additional Fields
+  - dimension: context_campaign_amp_utm_medium
+    type: string
+    sql: ${TABLE}.context_campaign_amp_utm_medium
 
-  - dimension: context_app_build
-    sql: ${TABLE}.context_app_build
+  - dimension: context_campaign_amp_utm_source
+    type: string
+    sql: ${TABLE}.context_campaign_amp_utm_source
 
-  - dimension: context_app_release_version
-    sql: ${TABLE}.context_app_release_version
+  - dimension: context_campaign_amp_utm_term
+    type: string
+    sql: ${TABLE}.context_campaign_amp_utm_term
 
-  - dimension: context_app_version
-    sql: ${TABLE}.context_app_version
+  - dimension: context_campaign_camosspaign
+    type: string
+    sql: ${TABLE}.context_campaign_camosspaign
 
-  - dimension: context_carrier
-    sql: ${TABLE}.context_carrier
+  - dimension: context_campaign_content
+    type: string
+    sql: ${TABLE}.context_campaign_content
 
-  - dimension: context_device_idfa
-    sql: ${TABLE}.context_device_idfa
+  - dimension: context_campaign_creampaign
+    type: string
+    sql: ${TABLE}.context_campaign_creampaign
 
-  - dimension: context_device_manufacturer
-    sql: ${TABLE}.context_device_manufacturer
+  - dimension: context_campaign_dailymailcampaign
+    type: string
+    sql: ${TABLE}.context_campaign_dailymailcampaign
 
-  - dimension: context_device_model
-    sql: ${TABLE}.context_device_model
+  - dimension: context_campaign_medium
+    type: string
+    sql: ${TABLE}.context_campaign_medium
 
-  - dimension: context_device_type
-    sql: ${TABLE}.context_device_type
+  - dimension: context_campaign_name
+    type: string
+    sql: ${TABLE}.context_campaign_name
+
+  - dimension: context_campaign_source
+    type: string
+    sql: ${TABLE}.context_campaign_source
+
+  - dimension: context_campaign_term
+    type: string
+    sql: ${TABLE}.context_campaign_term
+
+  - dimension: context_campaign_utm_campaign
+    type: string
+    sql: ${TABLE}.context_campaign_utm_campaign
+
+  - dimension: context_campaign_utm_content
+    type: string
+    sql: ${TABLE}.context_campaign_utm_content
+
+  - dimension: context_campaign_utm_medium
+    type: string
+    sql: ${TABLE}.context_campaign_utm_medium
+
+  - dimension: context_campaign_utm_source
+    type: string
+    sql: ${TABLE}.context_campaign_utm_source
+
+  - dimension: context_campaign_utm_term
+    type: string
+    sql: ${TABLE}.context_campaign_utm_term
+
+  - dimension: context_integration_name
+    type: string
+    sql: ${TABLE}.context_integration_name
+
+  - dimension: context_integration_version
+    type: string
+    sql: ${TABLE}.context_integration_version
 
   - dimension: context_ip
+    type: string
     sql: ${TABLE}.context_ip
 
   - dimension: context_library_name
+    type: string
     sql: ${TABLE}.context_library_name
 
   - dimension: context_library_version
+    type: string
     sql: ${TABLE}.context_library_version
 
-  - dimension: context_os
-    sql: ${TABLE}.context_os
+  - dimension: context_page_path
+    type: string
+    sql: ${TABLE}.context_page_path
 
-  - dimension: context_os_name
-    sql: ${TABLE}.context_os_name
+  - dimension: context_page_referrer
+    type: string
+    sql: ${TABLE}.context_page_referrer
 
-  - dimension: context_os_version
-    sql: ${TABLE}.context_os_version
+  - dimension: context_page_search
+    type: string
+    sql: ${TABLE}.context_page_search
 
-  - dimension: context_screen_height
-    type: number
-    sql: ${TABLE}.context_screen_height
+  - dimension: context_page_title
+    type: string
+    sql: ${TABLE}.context_page_title
 
-  - dimension: context_screen_width
-    type: number
-    sql: ${TABLE}.context_screen_width
+  - dimension: context_page_url
+    type: string
+    sql: ${TABLE}.context_page_url
+
+  - dimension: context_traits_email
+    type: string
+    sql: ${TABLE}.context_traits_email
+
+  - dimension: context_traits_name
+    type: string
+    sql: ${TABLE}.context_traits_name
+
+  - dimension: context_traits_newsletter_glossier
+    type: yesno
+    sql: ${TABLE}.context_traits_newsletter_glossier
+
+  - dimension: context_traits_placement
+    type: string
+    sql: ${TABLE}.context_traits_placement
+
+  - dimension: context_traits_source
+    type: string
+    sql: ${TABLE}.context_traits_source
 
   - dimension: context_user_agent
+    type: string
     sql: ${TABLE}.context_user_agent
 
-#   - dimension_group: send
-#     type: time                               ##DEPRECATED
-#     timeframes: [time, date, week, month]
-#     sql: ${TABLE}.send_at
-    
+  - dimension: event
+    type: string
+    sql: ${TABLE}.event
+
+  - dimension: event_text
+    type: string
+    sql: ${TABLE}.event_text
+
+  - dimension_group: original_timestamp
+    type: time
+    timeframes: [time, date, week, month]
+    sql: ${TABLE}.original_timestamp
+
+  - dimension_group: received
+    type: time
+    timeframes: [time, date, week, month]
+    sql: ${TABLE}.received_at
+
   - dimension_group: sent
     type: time
     timeframes: [time, date, week, month]
-    sql: ${TABLE}.sent_at  
+    sql: ${TABLE}.sent_at
+
+  - dimension_group: timestamp
+    type: time
+    timeframes: [time, date, week, month]
+    sql: ${TABLE}.timestamp
+
+  - dimension: user_id
+    type: string
+    # hidden: true
+    sql: ${TABLE}.user_id
+
+  - dimension: uuid
+    type: number
+    value_format_name: id
+    sql: ${TABLE}.uuid
+
+  - dimension_group: uuid_ts
+    type: time
+    timeframes: [time, date, week, month]
+    sql: ${TABLE}.uuid_ts
 
   - measure: count
     type: count
-    drill_fields: [context_library_name, context_os_name]
+    drill_fields: detail*
+    
+  ## Advanced Fields (require joins to other views) 
 
-
-## Advanced Fields (require joins to other views) 
-
-  - dimension_group: weeks_since_first_visit
-    type: number
-    sql: FLOOR(DATEDIFF(day,${user_session_facts.first_date}, ${sent_date})/7)
-
-  - dimension: is_new_user
-    sql:  |
-        CASE 
-        WHEN ${sent_date} = ${user_session_facts.first_date} THEN 'New User'
-        ELSE 'Returning User' END
-  
-  - measure: count_percent_of_total
-    type: percent_of_total
-    sql: ${count}
-    value_format_name: decimal_1
+#   - dimension_group: weeks_since_first_visit
+#     type: number
+#     sql: FLOOR(DATEDIFF(day,${user_session_facts.first_date}, ${sent_date})/7)
+# 
+#   - dimension: is_new_user
+#     sql:  |
+#         CASE 
+#         WHEN ${sent_date} = ${user_session_facts.first_date} THEN 'New User'
+#         ELSE 'Returning User' END
+#   
+#   - measure: count_percent_of_total
+#     type: percent_of_total
+#     sql: ${count}
+#     value_format_name: decimal_1
   
     
 ## Advanced -- Session Count Funnel Meausures
   
-  - filter: event1
-    suggestions: [added_item, app_became_active, app_entered_background, 
-                  app_entered_foreground, app_launched, app_resigned_active,
-                  asked_for_sizes, completed_order, failed_auth_validation, logged_in,
-                  made_purchase, payment_available, payment_failed, payment_form_shown,
-                  payment_form_submitted, removed_item, saved_sizes, shipping_available,
-                  shipping_form_failed, shipping_form_shown, shipping_form_submitted,
-                  signed_up, submitted_order, switched_auth_forms, tapped_shipit,
-                  view_buy_page, viewed_auth_page]
+#   - filter: event1
+#     suggestions: [added_item, app_became_active, app_entered_background, 
+#                   app_entered_foreground, app_launched, app_resigned_active,
+#                   asked_for_sizes, completed_order, failed_auth_validation, logged_in,
+#                   made_purchase, payment_available, payment_failed, payment_form_shown,
+#                   payment_form_submitted, removed_item, saved_sizes, shipping_available,
+#                   shipping_form_failed, shipping_form_shown, shipping_form_submitted,
+#                   signed_up, submitted_order, switched_auth_forms, tapped_shipit,
+#                   view_buy_page, viewed_auth_page]
+# 
+#   - measure: event1_session_count
+#     type: number
+#     sql: | 
+#       COUNT(
+#         DISTINCT(
+#           CASE 
+#             WHEN 
+#             {% condition event1 %} ${event} {% endcondition %} 
+#               THEN ${track_facts.session_id}
+#             ELSE NULL END 
+#         )
+#       )
+# 
+#   - filter: event2
+#     suggestions: [added_item, app_became_active, app_entered_background, 
+#                   app_entered_foreground, app_launched, app_resigned_active,
+#                   asked_for_sizes, completed_order, failed_auth_validation, logged_in,
+#                   made_purchase, payment_available, payment_failed, payment_form_shown,
+#                   payment_form_submitted, removed_item, saved_sizes, shipping_available,
+#                   shipping_form_failed, shipping_form_shown, shipping_form_submitted,
+#                   signed_up, submitted_order, switched_auth_forms, tapped_shipit,
+#                   view_buy_page, viewed_auth_page]
+# 
+#   - measure: event2_session_count
+#     type: number
+#     sql: | 
+#       COUNT(
+#         DISTINCT(
+#           CASE 
+#             WHEN 
+#             {% condition event2 %} ${event} {% endcondition %} 
+#               THEN ${track_facts.session_id}
+#             ELSE NULL END 
+#         )
+#       )
+#       
+#   - filter: event3
+#     suggestions: [added_item, app_became_active, app_entered_background, 
+#                   app_entered_foreground, app_launched, app_resigned_active,
+#                   asked_for_sizes, completed_order, failed_auth_validation, logged_in,
+#                   made_purchase, payment_available, payment_failed, payment_form_shown,
+#                   payment_form_submitted, removed_item, saved_sizes, shipping_available,
+#                   shipping_form_failed, shipping_form_shown, shipping_form_submitted,
+#                   signed_up, submitted_order, switched_auth_forms, tapped_shipit,
+#                   view_buy_page, viewed_auth_page]
+# 
+#   - measure: event3_session_count
+#     type: number
+#     sql: | 
+#       COUNT(
+#         DISTINCT(
+#           CASE 
+#             WHEN 
+#             {% condition event3 %} ${event} {% endcondition %} 
+#               THEN ${track_facts.session_id}
+#             ELSE NULL END 
+#         )
+#       )
+#       
+#   - filter: event4
+#     suggestions: [added_item, app_became_active, app_entered_background, 
+#                   app_entered_foreground, app_launched, app_resigned_active,
+#                   asked_for_sizes, completed_order, failed_auth_validation, logged_in,
+#                   made_purchase, payment_available, payment_failed, payment_form_shown,
+#                   payment_form_submitted, removed_item, saved_sizes, shipping_available,
+#                   shipping_form_failed, shipping_form_shown, shipping_form_submitted,
+#                   signed_up, submitted_order, switched_auth_forms, tapped_shipit,
+#                   view_buy_page, viewed_auth_page]
+# 
+#   - measure: event4_session_count
+#     type: number
+#     sql: | 
+#       COUNT(
+#         DISTINCT(
+#           CASE 
+#             WHEN 
+#             {% condition event4 %} ${event} {% endcondition %} 
+#               THEN ${track_facts.session_id}
+#             ELSE NULL END 
+#         )
+#       )
+#       
 
-  - measure: event1_session_count
-    type: number
-    sql: | 
-      COUNT(
-        DISTINCT(
-          CASE 
-            WHEN 
-            {% condition event1 %} ${event} {% endcondition %} 
-              THEN ${track_facts.session_id}
-            ELSE NULL END 
-        )
-      )
 
-  - filter: event2
-    suggestions: [added_item, app_became_active, app_entered_background, 
-                  app_entered_foreground, app_launched, app_resigned_active,
-                  asked_for_sizes, completed_order, failed_auth_validation, logged_in,
-                  made_purchase, payment_available, payment_failed, payment_form_shown,
-                  payment_form_submitted, removed_item, saved_sizes, shipping_available,
-                  shipping_form_failed, shipping_form_shown, shipping_form_submitted,
-                  signed_up, submitted_order, switched_auth_forms, tapped_shipit,
-                  view_buy_page, viewed_auth_page]
+  # ----- Sets of fields for drilling ------
+  sets:
+    detail:
+    - id
+    - context_campaign_name
+    - context_library_name
+    - context_integration_name
+    - context_traits_name
+    - users.id
+    - users.name
+    - users.context_campaign_name
+    - users.context_library_name
+    - users.context_traits_name
 
-  - measure: event2_session_count
-    type: number
-    sql: | 
-      COUNT(
-        DISTINCT(
-          CASE 
-            WHEN 
-            {% condition event2 %} ${event} {% endcondition %} 
-              THEN ${track_facts.session_id}
-            ELSE NULL END 
-        )
-      )
-      
-  - filter: event3
-    suggestions: [added_item, app_became_active, app_entered_background, 
-                  app_entered_foreground, app_launched, app_resigned_active,
-                  asked_for_sizes, completed_order, failed_auth_validation, logged_in,
-                  made_purchase, payment_available, payment_failed, payment_form_shown,
-                  payment_form_submitted, removed_item, saved_sizes, shipping_available,
-                  shipping_form_failed, shipping_form_shown, shipping_form_submitted,
-                  signed_up, submitted_order, switched_auth_forms, tapped_shipit,
-                  view_buy_page, viewed_auth_page]
-
-  - measure: event3_session_count
-    type: number
-    sql: | 
-      COUNT(
-        DISTINCT(
-          CASE 
-            WHEN 
-            {% condition event3 %} ${event} {% endcondition %} 
-              THEN ${track_facts.session_id}
-            ELSE NULL END 
-        )
-      )
-      
-  - filter: event4
-    suggestions: [added_item, app_became_active, app_entered_background, 
-                  app_entered_foreground, app_launched, app_resigned_active,
-                  asked_for_sizes, completed_order, failed_auth_validation, logged_in,
-                  made_purchase, payment_available, payment_failed, payment_form_shown,
-                  payment_form_submitted, removed_item, saved_sizes, shipping_available,
-                  shipping_form_failed, shipping_form_shown, shipping_form_submitted,
-                  signed_up, submitted_order, switched_auth_forms, tapped_shipit,
-                  view_buy_page, viewed_auth_page]
-
-  - measure: event4_session_count
-    type: number
-    sql: | 
-      COUNT(
-        DISTINCT(
-          CASE 
-            WHEN 
-            {% condition event4 %} ${event} {% endcondition %} 
-              THEN ${track_facts.session_id}
-            ELSE NULL END 
-        )
-      )
-      

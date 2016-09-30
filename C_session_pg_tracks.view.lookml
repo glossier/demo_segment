@@ -1,15 +1,15 @@
 - view: sessions_pg_trk
   derived_table:
     sortkeys: [session_start_at]
-    distkey: looker_visitor_id  
+    distkey: glossier_visitor_id  
     sql_trigger_value: select count(*) from ${mapped_events.SQL_TABLE_NAME}
     
     sql: |
-        select row_number() over(partition by looker_visitor_id order by received_at) || ' - '||  looker_visitor_id as session_id
+        select row_number() over(partition by glossier_visitor_id order by received_at) || ' - '||  glossier_visitor_id as session_id
               , looker_visitor_id
               , received_at as session_start_at
-              , row_number() over(partition by looker_visitor_id order by received_at) as session_sequence_number
-              , lead(received_at) over(partition by looker_visitor_id order by received_at) as next_session_start_at
+              , row_number() over(partition by glossier_visitor_id order by received_at) as session_sequence_number
+              , lead(received_at) over(partition by glossier_visitor_id order by received_at) as next_session_start_at
         from ${mapped_events.SQL_TABLE_NAME}
         where (idle_time_minutes > 30 or idle_time_minutes is null)
             
@@ -20,9 +20,9 @@
     hidden: true
     sql: ${TABLE}.session_id
 
-  - dimension: looker_visitor_id
+  - dimension: glossier_visitor_id
     type: number
-    sql: ${TABLE}.looker_visitor_id
+    sql: ${TABLE}.glossier_visitor_id
 
   - dimension_group: start
     type: time
@@ -57,7 +57,7 @@
   
   - measure: count_visitors
     type: count_distinct
-    sql: ${looker_visitor_id}
+    sql: ${glossier_visitor_id}
   
   - measure: avg_sessions_per_user
     type: number
@@ -73,8 +73,7 @@
   sets:
     detail:
       - session_id
-      - looker_visitor_id
+      - glossier_visitor_id
       - session_start_at
       - session_sequence_number
       - next_session_start_at
-
