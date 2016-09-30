@@ -6,7 +6,7 @@
     
     sql: |
         select row_number() over(partition by glossier_visitor_id order by received_at) || ' - '||  glossier_visitor_id as session_id
-              , looker_visitor_id
+              , glossier_visitor_id
               , received_at as session_start_at
               , row_number() over(partition by glossier_visitor_id order by received_at) as session_sequence_number
               , lead(received_at) over(partition by glossier_visitor_id order by received_at) as next_session_start_at

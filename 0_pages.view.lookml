@@ -35,82 +35,102 @@
     sql: ${TABLE}.anonymous_id
 
   - dimension: context_campaign_amp_utm_campaign
+    hidden: true
     type: string
     sql: ${TABLE}.context_campaign_amp_utm_campaign
 
   - dimension: context_campaign_amp_utm_content
+    hidden: true
     type: string
     sql: ${TABLE}.context_campaign_amp_utm_content
 
   - dimension: context_campaign_amp_utm_medium
+    hidden: true
     type: string
     sql: ${TABLE}.context_campaign_amp_utm_medium
 
   - dimension: context_campaign_amp_utm_source
+    hidden: true
     type: string
     sql: ${TABLE}.context_campaign_amp_utm_source
 
   - dimension: context_campaign_amp_utm_term
+    hidden: true
     type: string
     sql: ${TABLE}.context_campaign_amp_utm_term
 
   - dimension: context_campaign_camfpaign
+    hidden: true
     type: string
     sql: ${TABLE}.context_campaign_camfpaign
 
   - dimension: context_campaign_camosspaign
+    hidden: true
     type: string
     sql: ${TABLE}.context_campaign_camosspaign
 
   - dimension: context_campaign_con_e2_80_8ctent
+    hidden: true
     type: string
     sql: ${TABLE}.context_campaign_con_e2_80_8ctent
 
   - dimension: context_campaign_content
+    hidden: true
     type: string
     sql: ${TABLE}.context_campaign_content
 
   - dimension: context_campaign_creampaign
+    hidden: true
     type: string
     sql: ${TABLE}.context_campaign_creampaign
 
   - dimension: context_campaign_dailymailcampaign
+    hidden: true
     type: string
     sql: ${TABLE}.context_campaign_dailymailcampaign
 
   - dimension: context_campaign_medium
+    hidden: true
     type: string
     sql: ${TABLE}.context_campaign_medium
 
   - dimension: context_campaign_name
+    hidden: true
     type: string
     sql: ${TABLE}.context_campaign_name
 
   - dimension: context_campaign_source
+    hidden: true
     type: string
     sql: ${TABLE}.context_campaign_source
 
   - dimension: context_campaign_term
+    hidden: true
     type: string
     sql: ${TABLE}.context_campaign_term
 
   - dimension: context_campaign_utm_campaign
+    hidden: true
     type: string
     sql: ${TABLE}.context_campaign_utm_campaign
 
   - dimension: context_campaign_utm_content
+    hidden: true
     type: string
     sql: ${TABLE}.context_campaign_utm_content
 
   - dimension: context_campaign_utm_medium
+    hidden: true
     type: string
     sql: ${TABLE}.context_campaign_utm_medium
 
   - dimension: context_campaign_utm_source
+    hidden: true
     type: string
     sql: ${TABLE}.context_campaign_utm_source
 
   - dimension: context_campaign_utm_term
+    hidden: true
     type: string
     sql: ${TABLE}.context_campaign_utm_term
 

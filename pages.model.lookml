@@ -4,7 +4,11 @@
 # - include: ".dashboard.lookml"  # include all dashboards in this project
 
 
+- explore: event_facts
+
 - explore: page_aliases_mapping
+
+- explore: mapped_events
 
 - explore: pages
 
