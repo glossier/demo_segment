@@ -27,7 +27,6 @@
     sql: ${TABLE}.context_campaign_amp_utm_medium
 
   - dimension: context_campaign_amp_utm_source
-    hidden: true
     type: string
     sql: ${TABLE}.context_campaign_amp_utm_source
 
@@ -87,7 +86,6 @@
     sql: ${TABLE}.context_campaign_utm_medium
 
   - dimension: context_campaign_utm_source
-    hidden: true
     type: string
     sql: ${TABLE}.context_campaign_utm_source
 
@@ -157,7 +155,6 @@
     sql: ${TABLE}.context_traits_placement
 
   - dimension: context_traits_source
-    hidden: true
     type: string
     sql: ${TABLE}.context_traits_source
 
@@ -190,6 +187,7 @@
     sql: ${TABLE}.sent_at
 
   - dimension_group: timestamp
+    hidden: true
     type: time
     timeframes: [time, date, week, month]
     sql: ${TABLE}.timestamp
@@ -205,6 +203,7 @@
     sql: ${TABLE}.uuid
 
   - dimension_group: uuid_ts
+    hidden: true
     type: time
     timeframes: [time, date, week, month]
     sql: ${TABLE}.uuid_ts
