@@ -34,73 +34,18 @@
     type: string
     sql: ${TABLE}.anonymous_id
 
-  - dimension: context_campaign_amp_utm_campaign
-    hidden: true
-    type: string
-    sql: ${TABLE}.context_campaign_amp_utm_campaign
-
-  - dimension: context_campaign_amp_utm_content
-    hidden: true
-    type: string
-    sql: ${TABLE}.context_campaign_amp_utm_content
-
-  - dimension: context_campaign_amp_utm_medium
-    hidden: true
-    type: string
-    sql: ${TABLE}.context_campaign_amp_utm_medium
-
-  - dimension: context_campaign_amp_utm_source
-    hidden: true
-    type: string
-    sql: ${TABLE}.context_campaign_amp_utm_source
-
-  - dimension: context_campaign_amp_utm_term
-    hidden: true
-    type: string
-    sql: ${TABLE}.context_campaign_amp_utm_term
-
-  - dimension: context_campaign_camfpaign
-    hidden: true
-    type: string
-    sql: ${TABLE}.context_campaign_camfpaign
-
-  - dimension: context_campaign_camosspaign
-    hidden: true
-    type: string
-    sql: ${TABLE}.context_campaign_camosspaign
-
-  - dimension: context_campaign_con_e2_80_8ctent
-    hidden: true
-    type: string
-    sql: ${TABLE}.context_campaign_con_e2_80_8ctent
-
-  - dimension: context_campaign_content
-    hidden: true
-    type: string
-    sql: ${TABLE}.context_campaign_content
-
-  - dimension: context_campaign_creampaign
-    hidden: true
-    type: string
-    sql: ${TABLE}.context_campaign_creampaign
-
-  - dimension: context_campaign_dailymailcampaign
-    hidden: true
-    type: string
-    sql: ${TABLE}.context_campaign_dailymailcampaign
-
   - dimension: context_campaign_medium
-    hidden: true
+    label: 'Medium'
     type: string
     sql: ${TABLE}.context_campaign_medium
 
   - dimension: context_campaign_name
-    hidden: true
+    label: 'Campaign'
     type: string
     sql: ${TABLE}.context_campaign_name
 
   - dimension: context_campaign_source
-    hidden: true
+    label: 'Source'
     type: string
     sql: ${TABLE}.context_campaign_source
 
@@ -109,40 +54,18 @@
     type: string
     sql: ${TABLE}.context_campaign_term
 
-  - dimension: context_campaign_utm_campaign
-    hidden: true
-    type: string
-    sql: ${TABLE}.context_campaign_utm_campaign
-
-  - dimension: context_campaign_utm_content
-    hidden: true
-    type: string
-    sql: ${TABLE}.context_campaign_utm_content
-
-  - dimension: context_campaign_utm_medium
-    hidden: true
-    type: string
-    sql: ${TABLE}.context_campaign_utm_medium
-
-  - dimension: context_campaign_utm_source
-    hidden: true
-    type: string
-    sql: ${TABLE}.context_campaign_utm_source
-
-  - dimension: context_campaign_utm_term
-    hidden: true
-    type: string
-    sql: ${TABLE}.context_campaign_utm_term
-
   - dimension: context_ip
+    hidden: true
     type: string
     sql: ${TABLE}.context_ip
 
   - dimension: context_library_name
+    hidden: true
     type: string
     sql: ${TABLE}.context_library_name
 
   - dimension: context_library_version
+    hidden: true
     type: string
     sql: ${TABLE}.context_library_version
 
@@ -155,22 +78,27 @@
     sql: ${TABLE}.context_page_referrer
 
   - dimension: context_page_search
+    hidden: true
     type: string
     sql: ${TABLE}.context_page_search
 
   - dimension: context_page_title
+    hidden: true
     type: string
     sql: ${TABLE}.context_page_title
 
   - dimension: context_page_url
+    hidden: true
     type: string
     sql: ${TABLE}.context_page_url
 
   - dimension: context_traits_email
+    hidden: true
     type: string
     sql: ${TABLE}.context_traits_email
 
   - dimension: context_traits_name
+    hidden: true
     type: string
     sql: ${TABLE}.context_traits_name
 
@@ -179,18 +107,22 @@
     sql: ${TABLE}.context_traits_newsletter_glossier
 
   - dimension: context_traits_placement
+    hidden: true
     type: string
     sql: ${TABLE}.context_traits_placement
 
   - dimension: context_traits_source
+    hidden: true
     type: string
     sql: ${TABLE}.context_traits_source
 
   - dimension: context_user_agent
+    hidden: true
     type: string
     sql: ${TABLE}.context_user_agent
 
   - dimension_group: original_timestamp
+    hidden: true
     type: time
     timeframes: [time, date, week, month]
     sql: ${TABLE}.original_timestamp
@@ -213,11 +145,13 @@
     sql: ${TABLE}.sent_at
 
   - dimension_group: timestamp
+    hidden: true
     type: time
     timeframes: [time, date, week, month]
     sql: ${TABLE}.timestamp
 
   - dimension_group: uuid_ts
+    hidden: true
     type: time
     timeframes: [time, date, week, month]
     sql: ${TABLE}.uuid_ts

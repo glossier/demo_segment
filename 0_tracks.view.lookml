@@ -8,6 +8,7 @@
     sql: ${TABLE}.id
 
   - dimension: anonymous_id
+    hidden: true
     type: string
     sql: ${TABLE}.anonymous_id
 
