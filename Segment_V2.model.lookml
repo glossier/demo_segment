@@ -4,6 +4,13 @@
 # - include: ".dashboard.lookml"  # include all dashboards in this project
 
 
+- explore: experiments
+  view_label: "A/B Tests"
+  joins:
+    - join: completed_order
+      sql_on: ${experiments.anonymous_id} = ${completed_order.anonymous_id}
+      relationship: one_to_one
+      
 - explore: event_facts
   view_label: Events
   label: Events
