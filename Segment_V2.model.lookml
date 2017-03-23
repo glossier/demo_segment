@@ -31,6 +31,9 @@
     relationship: many_to_one
 #           and event_facts.received_at = tracks.received_at  
 #       and event_facts.anonymous_id = tracks.anonymous_id
+
+- explore: completed_order
+
   
 #   - join: page_facts
 #     view_label: Events
