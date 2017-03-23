@@ -4,6 +4,8 @@ connection: "segment"
 # - include: ".dashboard.lookml"  # include all dashboards in this project
 include: "*.view"
 
+explore: completed_order {}
+
 explore: experiments {
   view_label: "A/B Tests"
 
