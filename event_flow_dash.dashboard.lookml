@@ -2,23 +2,23 @@
 #   title: Event Flow Analysis
 #   layout: tile
 #   tile_size: 100
-# 
+#
 #   filters:
-# 
+#
 #   - name: date
 #     title: "Date"
 #     type: date_filter
 #     default_value: 2014
-#   
+#
 #   - name: event
 #     title: 'First Event'
 #     type: field_filter
 #     explore: tracks
 #     field: tracks.event
 #     default_value: 'signed_up'
-#     
+#
 #   elements:
-# 
+#
 #   - name: tracks_drop_off
 #     title: Tracks Drop Off
 #     type: looker_column
@@ -50,7 +50,7 @@
 #     x_axis_scale: auto
 #     show_null_labels: false
 #     show_dropoff: true
-#   
+#
 #   - name: event_flow
 #     title: Event Flow
 #     type: table
@@ -68,7 +68,7 @@
 #     show_view_names: false
 #     show_row_numbers: true
 #     truncate_column_names: false
-# 
+#
 #   - name: top_five_second
 #     title: Top 5 Second Events
 #     type: looker_bar
@@ -99,7 +99,7 @@
 #     show_x_axis_ticks: true
 #     x_axis_scale: auto
 #     show_null_labels: false
-# 
+#
 #   - name: top_five_third
 #     title: Top 5 Third Events
 #     type: looker_bar
@@ -130,7 +130,7 @@
 #     show_x_axis_ticks: true
 #     x_axis_scale: auto
 #     show_null_labels: false
-# 
+#
 #   - name: top_five_fourth
 #     title: Top 5 Fourth Events
 #     type: looker_bar
@@ -161,7 +161,7 @@
 #     show_x_axis_ticks: true
 #     x_axis_scale: auto
 #     show_null_labels: false
-# 
+#
 #   - name: top_five_fifth
 #     title: Top 5 Fifth Events
 #     type: looker_bar
@@ -192,7 +192,7 @@
 #     show_x_axis_ticks: true
 #     x_axis_scale: auto
 #     show_null_labels: false
-# 
+#
 #   - name: top_second
 #     title: Second Event
 #     type: table
@@ -209,7 +209,7 @@
 #     show_view_names: false
 #     show_row_numbers: true
 #     truncate_column_names: false
-# 
+#
 #   - name: top_third
 #     title: Third Event
 #     type: table
@@ -226,7 +226,7 @@
 #     show_view_names: false
 #     show_row_numbers: true
 #     truncate_column_names: false
-# 
+#
 #   - name: top_fourth
 #     title: Fourth Event
 #     type: table
@@ -243,7 +243,7 @@
 #     show_view_names: false
 #     show_row_numbers: true
 #     truncate_column_names: false
-# 
+#
 #   - name: top_fifth
 #     title: Fifth Event
 #     type: table
@@ -260,4 +260,4 @@
 #     show_view_names: false
 #     show_row_numbers: true
 #     truncate_column_names: false
-# 
+#

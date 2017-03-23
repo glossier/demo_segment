@@ -1,124 +1,125 @@
-- view: page_aliases_mapping
-  derived_table:
-    sql_trigger_value: select current_date
-    sortkeys: [glossier_visitor_id, alias]
-    distkey: ALL
-    sql: |
-      with
-            
-      -- Establish all child-to-parent edges from tables (tracks, pages, aliases) 
+view: page_aliases_mapping {
+  derived_table: {
+    sql_trigger_value: select current_date ;;
+    sortkeys: ["glossier_visitor_id", "alias"]
+    distribution: "ALL"
+    sql: with
+
+      -- Establish all child-to-parent edges from tables (tracks, pages, aliases)
       all_mappings as (
         select anonymous_id
         , user_id
         , received_at as received_at
         from glossier_production.tracks
-            
+
         union
-            
+
         select user_id
           , null
           , received_at
         from glossier_production.tracks
-              
+
         union
-               
+
         select anonymous_id
           , user_id
           , received_at
         from glossier_production.pages
-               
+
         union
-               
+
         select user_id
         , null
         , received_at
         from glossier_production.pages
       )
-            
-      select 
+
+      select
                   distinct anonymous_id as alias
-                  , coalesce(first_value(user_id ignore nulls) 
+                  , coalesce(first_value(user_id ignore nulls)
                   over(
-                    partition by anonymous_id 
-                    order by received_at 
+                    partition by anonymous_id
+                    order by received_at
                     rows between unbounded preceding and unbounded following),anonymous_id) as glossier_visitor_id
       from all_mappings
+       ;;
+  }
 
-  fields:
-  
   # Anonymous ID
-  - dimension: alias
-    primary_key: true
-    sql: ${TABLE}.alias
+  dimension: alias {
+    primary_key: yes
+    sql: ${TABLE}.alias ;;
+  }
 
   # User ID
-  - dimension: glossier_visitor_id
-    sql: ${TABLE}.glossier_visitor_id
-  
-#   - measure: count
-#     type: count
-    
-  - measure: count_visitor
+  dimension: glossier_visitor_id {
+    sql: ${TABLE}.glossier_visitor_id ;;
+  }
+
+  #   - measure: count
+  #     type: count
+
+  measure: count_visitor {
     type: count_distinct
-    sql: ${glossier_visitor_id}
-    
-    
-    
+    sql: ${glossier_visitor_id} ;;
+  }
+}
+
 ### More Complex Aliasing Using Alias Table ###
 
 #     sql: |
 #        with
-#             
-#             -- Establish all child-to-parent edges from tables (tracks, pages, aliases) 
+#
+#             -- Establish all child-to-parent edges from tables (tracks, pages, aliases)
 #             all_mappings as (
-#               select anonymous_id 
-#                 , user_id 
-#                 , received_at 
+#               select anonymous_id
+#                 , user_id
+#                 , received_at
 #               from hoodie.tracks
-#             
+#
 #               union
-#             
+#
 #               select user_id
 #                 , null
 #                 , received_at
 #               from hoodie.tracks
-#             
+#
 #                union
-#             
+#
 #                select previous_id
 #                 , user_id
 #                 , received_at
 #                from hoodie.aliases
-#               
+#
 #                union
-#               
+#
 #                select user_id
 #                  , null
 #                  , received_at
 #                from hoodie.aliases
-#                
+#
 #                union
-#                
+#
 #                select anonymous_id
 #                   , user_id
 #                   , received_at
 #                from hoodie.pages
-#                
+#
 #                union
-#                
+#
 #                select user_id
 #                   , null
 #                   , received_at
 #                from hoodie.pages
 #             ),
-#             
+#
 #             -- Only keep the oldest non-null parent for each child
 #             realiases as (
 #               select distinct alias
 #                 , first_value(next_alias ignore nulls) over(partition by alias order by realiased_at rows between unbounded preceding and unbounded following) as next_alias
 #               from all_mappings
 #             )
-#             
+#
 #             -- Traverse the tree upwards and point every node at its root
 #             select distinct r0.alias
 #               , coalesce(r9.next_alias

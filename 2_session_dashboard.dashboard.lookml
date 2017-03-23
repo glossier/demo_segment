@@ -2,16 +2,16 @@
 #   title: Sessions Overview
 #   layout: tile
 #   tile_size: 100
-# 
+#
 #   filters:
-# 
+#
 #   - name: date
 #     title: "Date"
 #     type: date_filter
 #     default_value: 2014
-#     
+#
 #   elements:
-# 
+#
 #   - name: add_a_unique_name_787
 #     title: Total Sessions
 #     type: single_value
@@ -24,7 +24,7 @@
 #     limit: 500
 #     width: 3
 #     height: 2
-#   
+#
 #   - name: add_a_unique_name_425
 #     title: Distinct Visitors
 #     type: single_value
@@ -37,7 +37,7 @@
 #     limit: 500
 #     width: 3
 #     height: 2
-#   
+#
 #   - name: add_a_unique_name_676
 #     title: Average Sessions Per User
 #     type: single_value
@@ -52,7 +52,7 @@
 #     font_size: medium
 #     width: 3
 #     height: 2
-#   
+#
 #   - name: add_a_unique_name_804
 #     title: Average Session Duration
 #     type: single_value
@@ -67,9 +67,9 @@
 #     font_size: medium
 #     width: 3
 #     height: 2
-# 
-# 
-#   
+#
+#
+#
 #   - name: add_a_unique_name_47
 #     title: Daily Session Count
 #     type: looker_area
@@ -92,7 +92,7 @@
 #     point_style: none
 #     interpolation: linear
 #     width: 8
-# 
+#
 #   - name: add_a_unique_name_837
 #     title: Bounced Session Percentage
 #     type: looker_pie
@@ -108,7 +108,7 @@
 #     show_null_points: true
 #     stacking: normal
 #     width: 4
-# 
+#
 #   - name: add_a_unique_name_975
 #     title: Daily Sessions by New Users
 #     type: looker_area
@@ -131,7 +131,7 @@
 #     point_style: none
 #     interpolation: linear
 #     width: 8
-#   
+#
 #   - name: add_a_unique_name_692
 #     title: New User Session Percentage
 #     type: looker_pie
@@ -146,7 +146,7 @@
 #     limit: 500
 #     show_null_points: true
 #     width: 4
-# 
+#
 #   - name: add_a_unique_name_812
 #     title: Cohort - Sessions Layered by First Session Month
 #     type: looker_area
@@ -177,7 +177,7 @@
 #     point_style: none
 #     interpolation: linear
 #     width: 8
-#   
+#
 #   - name: add_a_unique_name_113
 #     title: Customer Cohorts
 #     type: table
@@ -193,7 +193,7 @@
 #     limit: 500
 #     total: false
 #     width: 4
-#   
+#
 #   - name: add_a_unique_name_629
 #     title: Conversion Funnel
 #     type: looker_column

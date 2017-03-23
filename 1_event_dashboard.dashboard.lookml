@@ -2,16 +2,16 @@
 # #   title: Tracks Overview
 # #   layout: tile
 # #   tile_size: 100
-# # 
+# #
 # #   filters:
 
 
-# # 
+# #
 # #   - name: date
 # #     title: "Date"
 # #     type: date_filter
 # #     default_value: 2014
-# # 
+# #
 # # #   - name: event
 # # #     title: 'First Event'
 # # #     type: field_filter
@@ -19,9 +19,9 @@
 # # #     explore: events
 # # #     field: track_facts.event
 # # #     default_value: 'signed_up'
-# # #     
+# # #
 # #   elements:
-# # 
+# #
 # #   - name: unique_users
 # #     title: Unique Users
 # #     type: single_value
@@ -36,9 +36,9 @@
 # #     font_size: medium
 # #     width: 4
 # #     height: 2
-# #   
-# # 
-# # 
+# #
+# #
+# #
 # #   - name: add_a_unique_name_4380
 # #     title: Total Tracks
 # #     type: single_value
@@ -53,7 +53,7 @@
 # #     font_size: medium
 # #     width: 4
 # #     height: 2
-# #   
+# #
 # # #   - name: add_a_unique_name_863
 # # #     title: Pages Count
 # # #     type: single_value
@@ -68,7 +68,7 @@
 # # #     font_size: medium
 # # #     width: 4
 # # #     height: 2
-# # 
+# #
 # #   - name: add_a_unique_name_769
 # #     title: Device Type Breakdown
 # #     type: looker_pie
@@ -82,7 +82,7 @@
 # #     limit: 500
 # #     width: 4
 # #     height: 2
-# # 
+# #
 # #   - name: add_a_unique_name_313
 # #     title: Carrier Breakdown
 # #     type: looker_pie
@@ -96,7 +96,7 @@
 # #     limit: 500
 # #     width: 6
 # #     height: 4
-# #   
+# #
 # # #   - name: add_a_unique_name_203
 # # #     title: Manufacturer Breakdown
 # # #     type: looker_pie
@@ -110,7 +110,7 @@
 # # #     limit: 500
 # # #     width: 3
 # # #     height: 3
-# #   
+# #
 # #   - name: add_a_unique_name_11
 # #     title: Top Device Models
 # #     type: table
@@ -124,7 +124,7 @@
 # #     limit: 50
 # #     width: 6
 # #     height: 4
-# #     
+# #
 # #   - name: add_a_unique_name_110
 # #     title: Daily Tracks Count
 # #     type: looker_line
@@ -158,7 +158,7 @@
 # #     point_style: none
 # #     interpolation: linear
 # #     y_axis_orientation: [left, right]
-# # 
+# #
 # #   - name: add_a_unique_name_973
 # #     title: Top 25 Event Types by Track Count
 # #     type: looker_column
