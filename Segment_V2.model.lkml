@@ -4,7 +4,13 @@ connection: "segment"
 # - include: ".dashboard.lookml"  # include all dashboards in this project
 include: "*.view"
 
-explore: completed_order {}
+explore: completed_order {
+
+  join: tracks {
+    sql_on: ${tracks.anonymous_id} = ${completed_order.anonymous_id} ;;
+    relationship: many_to_one
+  }
+}
 
 explore: experiments {
   view_label: "A/B Tests"
@@ -13,7 +19,6 @@ explore: experiments {
     sql_on: ${experiments.anonymous_id} = ${completed_order.anonymous_id} ;;
     relationship: one_to_one
   }
-
 }
 
 explore: event_facts {
